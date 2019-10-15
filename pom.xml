@@ -50,7 +50,7 @@
         <httpcomponents.httpcore.version>4.4.10</httpcomponents.httpcore.version>
         <netty.version>4.1.25.Final</netty.version>
         <!-- 工具类 数据结构 JSON -->
-        <jackson.version>2.9.6</jackson.version>
+        <jackson.version>2.10.0</jackson.version>
         <!-- 工具类 数据结构 YAML -->
         <org.yaml.snakeyaml.version>1.21</org.yaml.snakeyaml.version>
         <!-- 工具类 序列化 -->
