@@ -1,4 +1,4 @@
-#core-parent
+# core-parent
 
 &emsp;&emsp;增加对基本功能支持的Maven依赖到父项目中。并且修复代码中的Bug
 
