@@ -110,7 +110,8 @@
         <facebook.swift.version>0.23.1</facebook.swift.version>
         <!-- 中间件 ZooKeeper -->
         <!--<zookeeper.version>3.4.12</zookeeper.version>-->
-        <zookeeper.version>3.5.2-alpha</zookeeper.version>
+        <!--<zookeeper.version>3.5.2-alpha</zookeeper.version>-->
+        <zookeeper.version>3.5.5</zookeeper.version>
 
         <curator.version>4.1.0</curator.version>
         <!-- 中间件 Kafka -->
