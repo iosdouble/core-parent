@@ -1,25 +1,26 @@
 package org.nh.core.log.eventlog.aop.controller;
 
 
-import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.nh.core.log.eventlog.aop.AspectSupport;
+import org.nh.core.log.logserver.ILogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 /**
- * @author MrBird
+ * @author nihui
  */
 @Aspect
 @Component
 public class ControllerEndpointAspect extends AspectSupport {
 
+    @Autowired
+    private ILogService logService;
 
     @Pointcut("@annotation(org.nh.core.log.eventlog.aop.controller.ControllerEndpoint)")
     public void pointcut() {
@@ -31,6 +32,7 @@ public class ControllerEndpointAspect extends AspectSupport {
         Method targetMethod = resolveMethod(point);
         ControllerEndpoint annotation = targetMethod.getAnnotation(ControllerEndpoint.class);
         String operation = annotation.operation();
+        String exceptionMessage = annotation.exceptionMessage();
         long start = System.currentTimeMillis();
 //        try {
 //            result = point.proceed();
@@ -45,8 +47,16 @@ public class ControllerEndpointAspect extends AspectSupport {
 //            String error = FebsUtil.containChinese(message) ? exceptionMessage + "，" + message : exceptionMessage;
 //            throw new FebsException(error);
 //        }
-        return null;
+
+        try {
+            result = point.proceed();
+            logService.saveLog(point,targetMethod,exceptionMessage,operation,start);
+            return result;
+        }catch (Throwable throwable){
+            throw new RuntimeException(throwable);
+        }
     }
+
 }
 
 

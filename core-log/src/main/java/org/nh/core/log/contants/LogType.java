@@ -7,4 +7,5 @@ package org.nh.core.log.contants;
  * @Created by nihui
  */
 public class LogType {
+    public static final String EVENT="event";
 }
