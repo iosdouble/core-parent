@@ -5,9 +5,12 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.reflect.Method;
 
+
 /**
- * @author MrBird
- */
+ * @class: AspectSupport
+ * @description: TODO
+ * @date 2020/1/15 3:21 PM
+**/
 public abstract class AspectSupport {
 
     protected Method resolveMethod(ProceedingJoinPoint point) {

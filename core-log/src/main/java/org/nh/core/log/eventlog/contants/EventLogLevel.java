@@ -7,4 +7,7 @@ package org.nh.core.log.eventlog.contants;
  * @Created by nihui
  */
 public class EventLogLevel {
+    public static final String EXCEPTION="exception";
+    public static final String ERROR="error";
+    public static final String INFO="info";
 }

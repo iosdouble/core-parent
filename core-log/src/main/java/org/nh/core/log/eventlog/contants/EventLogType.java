@@ -7,4 +7,6 @@ package org.nh.core.log.eventlog.contants;
  * @Created by nihui
  */
 public class EventLogType {
+
+    public static final String API_EXECUTE="api.execute";
 }
