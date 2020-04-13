@@ -1,4 +1,4 @@
-package org.nh.core.util.cache;
+package org.nh.core.util.cache.redis;
 
 
 import org.springframework.data.redis.core.RedisTemplate;
