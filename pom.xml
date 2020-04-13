@@ -95,7 +95,7 @@
         <druid.version>1.1.10</druid.version>
 
         <!-- 安全 -->
-        <apache.shiro.version>1.4.0</apache.shiro.version>
+        <apache.shiro.version>1.5.0</apache.shiro.version>
 
         <!-- 中间件 -->
         <spring.data.version>2.0.8.RELEASE</spring.data.version>
