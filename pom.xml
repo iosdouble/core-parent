@@ -90,7 +90,7 @@
 
         <!-- spring、jersey、swagger、mybatis -->
         <!--<spring.version>5.0.7.RELEASE</spring.version>-->
-        <spring.version>5.1.5.RELEASE</spring.version>
+        <spring.version>5.1.14.RELEASE</spring.version>
 
         <jersey.version>2.27</jersey.version>
 
