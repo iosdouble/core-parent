@@ -18,6 +18,18 @@
         <module>core-log</module>
     </modules>
 
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <!-- 编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -78,7 +90,7 @@
 
         <!-- spring、jersey、swagger、mybatis -->
         <!--<spring.version>5.0.7.RELEASE</spring.version>-->
-        <spring.version>5.1.5.RELEASE</spring.version>
+        <spring.version>5.1.14.RELEASE</spring.version>
 
         <jersey.version>2.27</jersey.version>
 
@@ -165,81 +177,6 @@
         </resources>
     </build>
 
-    <profiles>
-        <profile>
-            <id>source</id>
-            <activation>
-                <property>
-                    <name>source</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
-                        <configuration>
-                            <attach>true</attach>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>javadoc</id>
-            <activation>
-                <property>
-                    <name>javadoc</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${maven-javadoc-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <tags>
-                                <tag>
-                                    <name>date</name>
-                                    <placement>a</placement>
-                                    <head>时间:</head>
-                                </tag>
-                                <tag>
-                                    <name>description</name>
-                                    <placement>a</placement>
-                                    <head>描述:</head>
-                                </tag>
-                            </tags>
-                            <encoding>UTF-8</encoding>
-                            <charset>UTF-8</charset>
-                            <!--<aggregate>true</aggregate>&lt;!&ndash; 将maven module中的所有doc集中到parent的doc中 &ndash;&gt;-->
-                            <!--<additionalparam>-Xdoclint:none</additionalparam>-->
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <dependencyManagement>
         <dependencies>
