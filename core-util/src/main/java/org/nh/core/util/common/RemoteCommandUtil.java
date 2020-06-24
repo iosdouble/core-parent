@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * 远程命令执行
+ */
 public class RemoteCommandUtil {
 
     public static String executeLinuxCmd(String cmd) {

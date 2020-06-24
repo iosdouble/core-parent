@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @Classname AbsBaseController
- * @Description TODO
+ * @Description TODO 基础 Controller
  * @Date 2020/1/15 3:27 PM
  * @Created by nihui
  */

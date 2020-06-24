@@ -40,9 +40,11 @@ import java.util.UUID;
 
 /**
  * @Classname RestLogAspect
- * @Description TODO 事件日志切入
+ * @Description TODO 事件日志切入操作
  * @Date 2020/4/13 6:43 PM
  * @Created by nihui
+ *
+ *  标注了 @RestLog 注解的类将会对事件日志进行记录
  */
 @Component
 @Aspect
@@ -51,11 +53,14 @@ public class RestLogAspect {
     protected final transient Logger eventlogger = LoggerFactory.getLogger(LogAppenderName.EVENT);
     protected final transient Logger systemExceptionlogger = LoggerFactory.getLogger(LogAppenderName.EXCEPTION_SYSTEM);
 
-    @Value("${cat.support.log.restlog.component:未知}")
+    /**
+     * 使用 @Value 从配置文件中获取对应的配置，默认框架为 Spring Cloud
+     */
+    @Value("${nh.support.log.restlog.component:未知}")
     private String component;
-    @Value("${cat.support.log.restlog.subSystem:未知}")
+    @Value("${nh.support.log.restlog.subSystem:未知}")
     private String subSystem;
-    @Value("${cat.support.log.restlog.framework:未知}")
+    @Value("${nh.support.log.restlog.framework:未知}")
     private String framework="SpringCloud";
 
     private String logType = LogType.EVENT;
@@ -72,6 +77,7 @@ public class RestLogAspect {
 
     /**
      * 编写切点方法
+     * 切入点就是是否存在 @RestLog 和 @IgnoreRestLog 两个注解
      */
     @Pointcut("!@within(org.nh.core.log.eventlog.aop.IgnoreRestLog) && !@annotation(org.nh.core.log.eventlog.aop.IgnoreRestLog)  && (@annotation(org.nh.core.log.eventlog.aop.RestLog) || @within(org.nh.core.log.eventlog.aop.RestLog))")
     public void restAspect() {
@@ -96,12 +102,11 @@ public class RestLogAspect {
         long apiEndTime = System.currentTimeMillis();
         long apiExecuteTime = apiEndTime - apiStartTime;
         eventLogBean.setApiExecutionTime(apiExecuteTime);
-
         return object;
     }
 
     /**
-     * 在操作之前调用
+     * 在操作之前调用，前置
      * @param joinPoint
      */
     @Before("restAspect()")
@@ -114,6 +119,7 @@ public class RestLogAspect {
         eventLogBean.setComponent(component);
         eventLogBean.setSubSystem(subSystem);
         eventLogBean.setFramework(framework);
+        // 获取请求参数 从Spring Web 中获取到对应的请求参数，这块可以对请求参数做二次封装，并且记录到日志中
         RequestAttributes requestAttributes=RequestContextHolder.getRequestAttributes();
         ServletRequestAttributes servletContainer = (ServletRequestAttributes) requestAttributes;
         HttpServletRequest httpServletRequest = servletContainer.getRequest();
@@ -136,6 +142,11 @@ public class RestLogAspect {
 
     }
 
+    /**
+     * 后置，返回之后做处理
+     * @param joinPoint
+     * @param result
+     */
     @AfterReturning(value = "restAspect()", returning = "result")
     public void doRestAspectAfterReturning(JoinPoint joinPoint, Object result) {
         if (result != null) {
@@ -156,6 +167,11 @@ public class RestLogAspect {
         eventlogger.info(JsonUtil.toJson(eventLogBean));
     }
 
+    /**
+     * 在捕获到异常之后进行返回
+     * @param joinPoint
+     * @param e
+     */
     @AfterThrowing(pointcut = "restAspect()", throwing = "e")
     public void doRestAspectAfterThrowing(JoinPoint joinPoint, Throwable e) {
         if (e != null) {
@@ -183,6 +199,7 @@ public class RestLogAspect {
 
     }
 
+    // ============= 扩展内容部分 =============
     /**
      * 用于进行数据格式转换
      * @param result

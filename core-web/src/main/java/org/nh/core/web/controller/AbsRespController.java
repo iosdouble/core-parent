@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @Classname AbsRespController
- * @Description TODO
+ * @Description TODO 注册实现响应结果生成器
  * @Date 2020/1/15 3:34 PM
  * @Created by nihui
  */

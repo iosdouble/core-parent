@@ -6,12 +6,13 @@ import org.nh.core.util.json.JsonUtil;
 
 /**
  * @class: ParentRuntimeException
- * @description: TODO 框架级别的exception父类
+ * @description: TODO 框架级别的 RuntimeException父类
  * @date 2020/1/15 3:38 PM
+ *
+ * 考虑需要 将 这个异常信息进行一个升级
 **/
 public abstract class ParentRuntimeException extends RuntimeException {
 
-	private static final long serialVersionUID = 713616801491210431L;
 	
 	private ExceptionMsg exceptionMsg=new ExceptionMsg();
 	

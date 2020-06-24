@@ -5,11 +5,13 @@ package org.nh.core.log.contents;
  * @Description TODO 输出日志分类
  * @Date 2020/4/13 6:34 PM
  * @Created by nihui
+ *
+ * 待扩展
  */
 public class LogAppenderName {
 
     /**
-     * juran核心框架输出日志
+     * 核心框架输出日志
      */
     public static final String CORE="core";
     /**
@@ -21,7 +23,7 @@ public class LogAppenderName {
      */
     public static final String EVENT="event";
     /**
-     * API event输出日志
+     * API audit输出日志
      */
     public static final String AUDIT="audit";
     /**

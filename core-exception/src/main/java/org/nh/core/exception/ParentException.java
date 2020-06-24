@@ -9,10 +9,11 @@ import org.nh.core.util.json.JsonUtil;
  * @class: ParentException
  * @description: TODO 框架级别的exception父类
  * @date 2020/1/15 3:37 PM
+ *
+ * 考虑将这个异常信息进行升级
 **/
 public abstract class ParentException extends Exception {
 
-	private static final long serialVersionUID = 713616801491210431L;
 	
 	private ExceptionMsg exceptionMsg=new ExceptionMsg();
 	

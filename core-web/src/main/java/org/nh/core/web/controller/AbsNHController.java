@@ -8,11 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Classname AbsNHController
- * @Description TODO
+ * @Description
  * @Date 2020/1/15 3:28 PM
  * @Created by nihui
  */
 public abstract class AbsNHController extends AbsRespController {
+
     @ExceptionHandler(value=Exception.class)
     @ResponseBody
     public Object doException(Exception exception,WebRequest webRequest){
