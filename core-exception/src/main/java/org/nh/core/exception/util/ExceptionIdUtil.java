@@ -15,10 +15,6 @@ import java.util.UUID;
 public class ExceptionIdUtil {
 	
 	/**
-	 * 
-	 * @author 王云龙
-	 * @date 2017年12月25日 下午12:14:38
-	 * @version 1.0
 	 * @description 获取Exception的id
 	 *
 	 * @return

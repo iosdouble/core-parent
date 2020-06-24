@@ -6,6 +6,8 @@ import org.nh.core.util.id.SnowflakeUtil;
  * 基于Snowflake生成errorid的实现类
  * 该类生成的errorid可以保证全局唯一
  *
+ * TODO 基于雪花算法的生成规则
+ *
  */
 public class SnowflakeExceptionIdGeneratorImpl implements IExceptionIdGenerator {
 

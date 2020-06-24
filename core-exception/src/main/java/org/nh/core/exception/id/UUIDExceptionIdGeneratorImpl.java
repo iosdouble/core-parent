@@ -8,6 +8,7 @@ import org.nh.core.util.id.UUIDUtil;
  * 基于UUID生成errorId的实现类
  * UUID不能保证分布式时的唯一性
  *
+ * TODO 基于UUID的生成规则
  */
 public class UUIDExceptionIdGeneratorImpl implements IExceptionIdGenerator {
 

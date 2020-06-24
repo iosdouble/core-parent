@@ -11,11 +11,8 @@ import org.nh.core.util.json.JsonUtil;
  *
  */
 public class ExceptionUtil{
+
 	/**
-	 * 
-	 * @author wangyunlong
-	 * @date 2017年8月13日 下午4:31:26
-	 * @version 1.0
 	 * @description 将异常字符串转换成ExceptionMsg
 	 * @param exceptionMsg
 	 * @return
@@ -25,14 +22,10 @@ public class ExceptionUtil{
 //		ExceptionMsg errorMsgBean=JsonUtil.toObject(exceptionMsg, ExceptionMsg.class);
 		return errorMsgBean;
 	}
-	
+
 	/**
-	 * 
-	 * @author wangyunlong
-	 * @date 2017年8月13日 下午4:31:54
-	 * @version 1.0
 	 * @description 判断一个json字符串是否是系统异常字符串
-	 * 判断的逻辑实现在下个版本会进行改进 
+	 * 判断的逻辑实现在下个版本会进行改进
 	 * @param exceptionMsg json字符串
 	 * @return
 	 */
