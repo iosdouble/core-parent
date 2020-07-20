@@ -19,7 +19,7 @@ public class JavassisUtil {
      * @param clazzName
      * @param methodName
      * @return
-     * @throws NotFoundException
+     * @throws NotFoundException 当没有找到对应的类或者没有找到对应的方法会抛出异常
      */
     public static String[] getFieldName(Class<?> cls,String clazzName,String methodName) throws NotFoundException {
         ClassPool pool = ClassPool.getDefault();
